@@ -534,9 +534,13 @@ static int avi_read_header(AVFormatContext *s)
     frame_period = 0;
     for (;;) {
         if (avio_feof(pb))
-            return AVERROR_INVALIDDATA;
+            //return AVERROR_INVALIDDATA;
+            goto end_of_header; // diffractor
         tag  = avio_rl32(pb);
         size = avio_rl32(pb);
+
+        if (tag == 0 || size == 0)
+            goto end_of_header; // diffractor
 
         print_tag(s, "tag", tag, size);
 
@@ -555,7 +559,9 @@ static int avi_read_header(AVFormatContext *s)
                 else
                     avi->movi_end = avi->fsize;
                 av_log(s, AV_LOG_TRACE, "movi end=%"PRIx64"\n", avi->movi_end);
-                goto end_of_header;
+                if (avio_seek(pb, avi->movi_end, SEEK_SET) < 0) // diffractor
+                    goto end_of_header; // maybe truncated file
+                // goto end_of_header; // diffractor
             } else if (tag1 == MKTAG('I', 'N', 'F', 'O'))
                 ff_read_riff_info(s, size - 4);
             else if (tag1 == MKTAG('n', 'c', 'd', 't'))
@@ -571,6 +577,13 @@ static int avi_read_header(AVFormatContext *s)
             avi_metadata_creation_time(&s->metadata, date);
             break;
         }
+        case MKTAG('_', 'P', 'M', 'X'):
+        {
+            ret = avi_read_tag(s, NULL, tag, size); // diffractor
+            if (ret < 0)
+                goto end_of_header;
+            break;
+        }        
         case MKTAG('d', 'm', 'l', 'h'):
             avi->is_odml = 1;
             avio_skip(pb, size + (size & 1));

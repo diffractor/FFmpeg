@@ -633,6 +633,9 @@ const AVMetadataConv ff_riff_info_conv[] = {
     { "ISFT", "encoder"    },
     { "ISMP", "timecode"   },
     { "ITCH", "encoded_by" },
+    { "COMM", "comment" }, // diffractor
+    { "TITL", "title" }, // diffractor
+    { "_PMX", "xmp" }, // diffractor
     { 0 },
 };
 

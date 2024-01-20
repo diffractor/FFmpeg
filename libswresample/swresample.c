@@ -403,6 +403,9 @@ int swri_realloc_audio(AudioData *a, int count){
     int i, countb;
     AudioData old;
 
+    if (a == 0 || a->bps == 0 || a->ch_count == 0)
+        return AVERROR(EINVAL); // diffractor
+
     if(count < 0 || count > INT_MAX/2/a->bps/a->ch_count)
         return AVERROR(EINVAL);
 
