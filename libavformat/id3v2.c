@@ -801,6 +801,7 @@ static const ID3v2EMFunc id3v2_extra_meta_funcs[] = {
     { "PIC", "APIC", read_apic,    free_apic    },
     { "CHAP","CHAP", read_chapter, free_chapter },
     { "PRIV","PRIV", read_priv,    free_priv    },
+    { "POPM","POPM", read_priv, free_priv }, // diffractor
     { NULL }
 };
 
