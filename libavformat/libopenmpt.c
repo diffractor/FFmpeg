@@ -168,6 +168,7 @@ static int read_packet_openmpt(AVFormatContext *s, AVPacket *pkt)
     OpenMPTContext *openmpt = s->priv_data;
     int n_samples = AUDIO_PKT_SIZE / (openmpt->ch_layout.nb_channels ? openmpt->ch_layout.nb_channels*4 : 4);
     int ret;
+    int64_t pts = openmpt_module_get_position_seconds(openmpt->module) * AV_TIME_BASE; // diffractor
 
     if ((ret = av_new_packet(pkt, AUDIO_PKT_SIZE)) < 0)
         return ret;
@@ -198,6 +199,7 @@ static int read_packet_openmpt(AVFormatContext *s, AVPacket *pkt)
     }
 
     pkt->size = ret * (openmpt->ch_layout.nb_channels * 4);
+    pkt->pts = pts; // diffractor
 
     if (pos >= 0 && pos < ((double)INT64_MAX + 1) / AV_TIME_BASE)
         pkt->pts = llrint(pos * AV_TIME_BASE);
