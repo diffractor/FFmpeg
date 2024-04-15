@@ -4306,6 +4306,12 @@
     <ClCompile Include="libavcodec\libdav1d.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libavcodec\dxva2_av1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavutil\version.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config-x64.h">
@@ -4807,6 +4813,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libavcodec\aom_film_grain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavutil\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavutil\ffversion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
