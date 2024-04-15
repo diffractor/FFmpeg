@@ -36,7 +36,6 @@
     <ClCompile Include="libavcodec\8svx.c" />
     <ClCompile Include="libavcodec\a64multienc.c" />
     <ClCompile Include="libavcodec\aaccoder.c" />
-    <ClCompile Include="libavcodec\aacdec_common.c" />
     <ClCompile Include="libavcodec\aacenc.c" />
     <ClCompile Include="libavcodec\aacenctab.c" />
     <ClCompile Include="libavcodec\aacenc_is.c" />
@@ -49,10 +48,15 @@
     <ClCompile Include="libavcodec\aacps_common.c" />
     <ClCompile Include="libavcodec\aacps_fixed_tablegen.c" />
     <ClCompile Include="libavcodec\aacps_tablegen.c" />
+    <ClCompile Include="libavcodec\aac\aacdec.c" />
+    <ClCompile Include="libavcodec\aac\aacdec_ac.c" />
+    <ClCompile Include="libavcodec\aac\aacdec_fixed.c" />
+    <ClCompile Include="libavcodec\aac\aacdec_float.c" />
+    <ClCompile Include="libavcodec\aac\aacdec_lpd.c" />
+    <ClCompile Include="libavcodec\aac\aacdec_tab.c" />
+    <ClCompile Include="libavcodec\aac\aacdec_usac.c" />
     <ClCompile Include="libavcodec\aac_ac3_parser.c" />
     <ClCompile Include="libavcodec\aac_parser.c" />
-    <ClCompile Include="libavcodec\aacdec.c" />
-    <ClCompile Include="libavcodec\aacdec_fixed.c" />
     <ClCompile Include="libavcodec\aacps_fixed.c" />
     <ClCompile Include="libavcodec\aacps_float.c" />
     <ClCompile Include="libavcodec\aacpsdsp_fixed.c" />
@@ -293,6 +297,7 @@
     <ClCompile Include="libavcodec\dolby_e_parse.c" />
     <ClCompile Include="libavcodec\dolby_e_parser.c" />
     <ClCompile Include="libavcodec\dovi_rpu.c" />
+    <ClCompile Include="libavcodec\dovi_rpudec.c" />
     <ClCompile Include="libavcodec\dpcm.c" />
     <ClCompile Include="libavcodec\dpx.c" />
     <ClCompile Include="libavcodec\dpx_parser.c" />
@@ -318,6 +323,7 @@
     <ClCompile Include="libavcodec\dxtory.c" />
     <ClCompile Include="libavcodec\dxv.c" />
     <ClCompile Include="libavcodec\dxva2.c" />
+    <ClCompile Include="libavcodec\dxva2_av1.c" />
     <ClCompile Include="libavcodec\dxva2_h264.c" />
     <ClCompile Include="libavcodec\dxva2_hevc.c" />
     <ClCompile Include="libavcodec\dxva2_mpeg2.c" />
@@ -433,18 +439,19 @@
     <ClCompile Include="libavcodec\hcom.c" />
     <ClCompile Include="libavcodec\hdrdec.c" />
     <ClCompile Include="libavcodec\hdr_parser.c" />
-    <ClCompile Include="libavcodec\hevc_cabac.c" />
-    <ClCompile Include="libavcodec\hevc_data.c" />
-    <ClCompile Include="libavcodec\hevc_filter.c" />
-    <ClCompile Include="libavcodec\hevc_mvs.c" />
-    <ClCompile Include="libavcodec\hevc_parse.c" />
-    <ClCompile Include="libavcodec\hevc_parser.c" />
-    <ClCompile Include="libavcodec\hevc_ps.c" />
-    <ClCompile Include="libavcodec\hevc_refs.c" />
-    <ClCompile Include="libavcodec\hevc_sei.c" />
-    <ClCompile Include="libavcodec\hevcdec.c" />
-    <ClCompile Include="libavcodec\hevcdsp.c" />
-    <ClCompile Include="libavcodec\hevcpred.c" />
+    <ClCompile Include="libavcodec\hevc\cabac.c" />
+    <ClCompile Include="libavcodec\hevc\data.c" />
+    <ClCompile Include="libavcodec\hevc\dsp.c" />
+    <ClCompile Include="libavcodec\hevc\filter.c" />
+    <ClCompile Include="libavcodec\hevc\hevcdec.c" />
+    <ClCompile Include="libavcodec\hevc\mvs.c" />
+    <ClCompile Include="libavcodec\hevc\parse.c" />
+    <ClCompile Include="libavcodec\hevc\parser.c" />
+    <ClCompile Include="libavcodec\hevc\pred.c" />
+    <ClCompile Include="libavcodec\hevc\ps.c" />
+    <ClCompile Include="libavcodec\hevc\ps_enc.c" />
+    <ClCompile Include="libavcodec\hevc\refs.c" />
+    <ClCompile Include="libavcodec\hevc\sei.c" />
     <ClCompile Include="libavcodec\hnm4video.c" />
     <ClCompile Include="libavcodec\hpeldsp.c" />
     <ClCompile Include="libavcodec\hq_hqa.c" />
@@ -769,6 +776,7 @@
     <ClCompile Include="libavcodec\tdsc.c" />
     <ClCompile Include="libavcodec\textdec.c" />
     <ClCompile Include="libavcodec\texturedsp.c" />
+    <ClCompile Include="libavcodec\threadprogress.c" />
     <ClCompile Include="libavcodec\tiertexseqv.c" />
     <ClCompile Include="libavcodec\tiff.c" />
     <ClCompile Include="libavcodec\tiff_common.c" />
@@ -1428,6 +1436,7 @@
     <ClCompile Include="libavutil\tx_int32.c" />
     <ClCompile Include="libavutil\utils.c" />
     <ClCompile Include="libavutil\uuid.c" />
+    <ClCompile Include="libavutil\version.c" />
     <ClCompile Include="libavutil\video_enc_params.c" />
     <ClCompile Include="libavutil\x86\cpu.c" />
     <ClCompile Include="libavutil\x86\fixed_dsp_init.c" />
@@ -1877,7 +1886,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
     </yasm>
+    <YASM Include="libavcodec\x86\vvc\vvc_alf.asm" />
     <YASM Include="libavcodec\x86\vvc\vvc_mc.asm" />
+    <YASM Include="libavcodec\x86\vvc\vvc_sad.asm" />
     <yasm Include="libavcodec\x86\xvididct.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
@@ -1926,6 +1937,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
     </yasm>
+    <YASM Include="libswscale\x86\range_convert.asm" />
     <yasm Include="libswscale\x86\rgb_2_rgb.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
@@ -1960,6 +1972,17 @@
     <ClInclude Include="libavcodec\aacsbr.h" />
     <ClInclude Include="libavcodec\aacsbrdata.h" />
     <ClInclude Include="libavcodec\aactab.h" />
+    <ClInclude Include="libavcodec\aac\aacdec.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_ac.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_fixed_coupling.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_fixed_dequant.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_fixed_prediction.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_float_coupling.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_float_prediction.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_latm.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_lpd.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_tab.h" />
+    <ClInclude Include="libavcodec\aac\aacdec_usac.h" />
     <ClInclude Include="libavcodec\aac_ac3_parser.h" />
     <ClInclude Include="libavcodec\aac_defines.h" />
     <ClInclude Include="libavcodec\aandcttab.h" />
@@ -1968,7 +1991,10 @@
     <ClInclude Include="libavcodec\aarch64\vp8dsp.h" />
     <ClInclude Include="libavcodec\aarch64\vp9dsp_init.h" />
     <ClInclude Include="libavcodec\ac3.h" />
+    <ClInclude Include="libavcodec\ac3dec.h" />
     <ClInclude Include="libavcodec\ac3_channel_layout_tab.h" />
+    <ClInclude Include="libavcodec\ac3_parser.h" />
+    <ClInclude Include="libavcodec\ac3_parser_internal.h" />
     <ClInclude Include="libavcodec\alpha\asm.h" />
     <ClInclude Include="libavcodec\alpha\hpeldsp_alpha.h" />
     <ClInclude Include="libavcodec\alpha\idctdsp_alpha.h" />
@@ -2022,6 +2048,14 @@
     <ClInclude Include="libavcodec\h2645_vui.h" />
     <ClInclude Include="libavcodec\hca_data.h" />
     <ClInclude Include="libavcodec\hevc.h" />
+    <ClInclude Include="libavcodec\hevc\data.h" />
+    <ClInclude Include="libavcodec\hevc\dsp.h" />
+    <ClInclude Include="libavcodec\hevc\hevc.h" />
+    <ClInclude Include="libavcodec\hevc\hevcdec.h" />
+    <ClInclude Include="libavcodec\hevc\parse.h" />
+    <ClInclude Include="libavcodec\hevc\pred.h" />
+    <ClInclude Include="libavcodec\hevc\ps.h" />
+    <ClInclude Include="libavcodec\hevc\sei.h" />
     <ClInclude Include="libavcodec\jpeg2000.h" />
     <ClInclude Include="libavcodec\jpeg2000htdec.h" />
     <ClInclude Include="libavcodec\jpegquanttables.h" />
@@ -2038,6 +2072,7 @@
     <ClInclude Include="libavcodec\proresdec.h" />
     <ClInclude Include="libavcodec\qoi.h" />
     <ClInclude Include="libavcodec\refstruct.h" />
+    <ClInclude Include="libavcodec\threadprogress.h" />
     <ClInclude Include="libavcodec\vlc.h" />
     <ClInclude Include="libavcodec\vp8data.h" />
     <ClInclude Include="libavcodec\vpx_rac.h" />
@@ -2093,6 +2128,7 @@
     <ClInclude Include="libavutil\ambient_viewing_environment.h" />
     <ClInclude Include="libavutil\csp.h" />
     <ClInclude Include="libavutil\executor.h" />
+    <ClInclude Include="libavutil\ffversion.h" />
     <ClInclude Include="libavutil\hdr_dynamic_metadata.h" />
     <ClInclude Include="libavutil\hdr_dynamic_vivid_metadata.h" />
     <ClInclude Include="libavutil\hwcontext_d3d11va.h" />
@@ -2103,6 +2139,7 @@
     <ClInclude Include="libavutil\timestamp.h" />
     <ClInclude Include="libavutil\tx.h" />
     <ClInclude Include="libavutil\uuid.h" />
+    <ClInclude Include="libavutil\version.h" />
   </ItemGroup>
   <ItemGroup>
     <yasm Include="libavcodec\x86\celt_pvq_search.asm">
@@ -2188,7 +2225,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -2287,7 +2324,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level1</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -2298,7 +2335,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;..\zlib;..\bzip2;..\libopenmpt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libavcodec;$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;$(SolutionDir)third-party\zlib;$(SolutionDir)third-party\bzip2;$(SolutionDir)third-party\libopenmpt</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
@@ -2307,7 +2344,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <StringPooling>true</StringPooling>
       <ControlFlowGuard>false</ControlFlowGuard>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <CompileAsManaged>false</CompileAsManaged>
       <CompileAsWinRT>false</CompileAsWinRT>
@@ -2319,7 +2356,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
-      <ProgramDataBaseFileName>$(IntDir)%(RelativeDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -2342,13 +2379,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level1</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>HAVE_AV_CONFIG_H;_CRT_SECURE_NO_WARNINGS;_FILE_OFFSET_BITS=64;_ISOC99_SOURCE;_LARGEFILE_SOURCE;_SYSCRT;_USE_MATH_DEFINES;inline=__inline;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;..\zlib;..\bzip2;..\libopenmpt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libavcodec;$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;$(SolutionDir)third-party\zlib;$(SolutionDir)third-party\bzip2;$(SolutionDir)third-party\libopenmpt</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -2362,8 +2399,8 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <ControlFlowGuard>Guard</ControlFlowGuard>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -2375,9 +2412,10 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
-      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <SupportJustMyCode>false</SupportJustMyCode>
-      <ProgramDataBaseFileName>$(IntDir)%(RelativeDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -2398,13 +2436,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level1</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>HAVE_AV_CONFIG_H;_CRT_SECURE_NO_WARNINGS;_FILE_OFFSET_BITS=64;_ISOC99_SOURCE;_LARGEFILE_SOURCE;_SYSCRT;_USE_MATH_DEFINES;inline=__inline;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;..\zlib;..\bzip2;..\libopenmpt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libavcodec;$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;$(SolutionDir)third-party\zlib;$(SolutionDir)third-party\bzip2;$(SolutionDir)third-party\libopenmpt</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <OmitFramePointers>false</OmitFramePointers>
       <CompileAsManaged>false</CompileAsManaged>
@@ -2415,10 +2453,10 @@
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <ControlFlowGuard>false</ControlFlowGuard>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -2429,9 +2467,10 @@
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
-      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <SupportJustMyCode>false</SupportJustMyCode>
-      <ProgramDataBaseFileName>$(IntDir)%(RelativeDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -2454,7 +2493,7 @@
       <PreprocessorDefinitions>HAVE_AV_CONFIG_H;_CRT_SECURE_NO_WARNINGS;_FILE_OFFSET_BITS=64;_ISOC99_SOURCE;_LARGEFILE_SOURCE;_SYSCRT;_USE_MATH_DEFINES;inline=__inline;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;..\zlib;..\bzip2;..\libopenmpt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libavcodec;$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;$(SolutionDir)third-party\zlib;$(SolutionDir)third-party\bzip2;$(SolutionDir)third-party\libopenmpt</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <OmitFramePointers>false</OmitFramePointers>
       <CompileAsManaged>false</CompileAsManaged>
@@ -2491,7 +2530,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level1</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -2500,10 +2539,10 @@
       <ConformanceMode>false</ConformanceMode>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <OmitFramePointers>true</OmitFramePointers>
-      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;..\zlib;..\bzip2;..\libopenmpt</AdditionalIncludeDirectories>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libavcodec;$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;$(SolutionDir)third-party\zlib;$(SolutionDir)third-party\bzip2;$(SolutionDir)third-party\libopenmpt</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <CompileAsManaged>false</CompileAsManaged>
       <CompileAsWinRT>false</CompileAsWinRT>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -2511,7 +2550,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <ControlFlowGuard>false</ControlFlowGuard>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -2523,7 +2562,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
       <SupportJustMyCode>false</SupportJustMyCode>
-      <ProgramDataBaseFileName>$(IntDir)%(RelativeDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
@@ -2554,7 +2593,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;..\zlib;..\bzip2;..\libopenmpt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libavcodec;$(ProjectDir);$(SolutionDir)third-party\dav1d\include;$(SolutionDir)third-party\liblzma\src\liblzma\api;$(SolutionDir)include;$(ProjectDir)compat\atomics\win32;$(SolutionDir)third-party\zlib;$(SolutionDir)third-party\bzip2;$(SolutionDir)third-party\libopenmpt</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <CompileAsManaged>false</CompileAsManaged>
       <CompileAsWinRT>false</CompileAsWinRT>

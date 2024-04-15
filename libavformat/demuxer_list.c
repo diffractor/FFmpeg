@@ -347,4 +347,5 @@ static const AVInputFormat * const demuxer_list[] = {
     &ff_image_xbm_pipe_demuxer,
     &ff_image_xpm_pipe_demuxer,
     &ff_image_xwd_pipe_demuxer,
+    &ff_libopenmpt_demuxer,
     NULL };

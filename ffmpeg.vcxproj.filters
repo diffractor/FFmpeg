@@ -37,9 +37,6 @@
     <ClCompile Include="libavcodec\aaccoder.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="libavcodec\aacdec_common.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="libavcodec\aacenc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,12 +77,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libavcodec\aac_parser.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\aacdec.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\aacdec_fixed.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libavcodec\aacps_fixed.c">
@@ -1091,42 +1082,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libavcodec\hdr_parser.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_cabac.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_filter.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_mvs.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_parse.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_parser.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_ps.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_refs.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevc_sei.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevcdec.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevcdsp.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libavcodec\hevcpred.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libavcodec\hnm4video.c">
@@ -4306,6 +4261,78 @@
     <ClCompile Include="libavcodec\libdav1d.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libavcodec\dxva2_av1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavutil\version.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec_ac.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec_fixed.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec_float.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec_lpd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec_tab.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\aac\aacdec_usac.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\cabac.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\dsp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\hevcdec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\mvs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\parse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\parser.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\pred.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\ps.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\ps_enc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\refs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\hevc\sei.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\threadprogress.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libavcodec\dovi_rpudec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config-x64.h">
@@ -4809,6 +4836,81 @@
     <ClInclude Include="libavcodec\aom_film_grain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="libavutil\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavutil\ffversion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_ac.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_fixed_coupling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_fixed_dequant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_fixed_prediction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_float_coupling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_float_prediction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_latm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_lpd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\aac\aacdec_usac.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\dsp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\hevc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\hevcdec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\parse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\pred.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\ps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\hevc\sei.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\ac3_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\ac3_parser_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\ac3dec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libavcodec\threadprogress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <yasm Include="libavcodec\x86\aacpsdsp.asm">
@@ -5121,6 +5223,15 @@
       <Filter>asm</Filter>
     </YASM>
     <YASM Include="libavcodec\x86\vvc\vvc_mc.asm">
+      <Filter>asm</Filter>
+    </YASM>
+    <YASM Include="libavcodec\x86\vvc\vvc_sad.asm">
+      <Filter>asm</Filter>
+    </YASM>
+    <YASM Include="libavcodec\x86\vvc\vvc_alf.asm">
+      <Filter>asm</Filter>
+    </YASM>
+    <YASM Include="libswscale\x86\range_convert.asm">
       <Filter>asm</Filter>
     </YASM>
   </ItemGroup>
