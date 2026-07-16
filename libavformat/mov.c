@@ -9507,6 +9507,84 @@ fail:
     return ret;
 }
 
+// Microsoft 'Xtra' box (moov/udta/Xtra): the store Windows Explorer / Media
+// Player use for extra metadata. Tags live in "WM/Category" and the 0-99 user
+// rating in "WM/SharedUserRating". Layout (all sizes big-endian; string values
+// are UTF-16LE, numeric values little-endian):
+//   entry:  u32 entrySize (incl. itself) | u32 nameSize | char name[nameSize]
+//           | u32 valueCount | value[valueCount]
+//   value:  u32 valueSize (incl. itself) | u16 valueType | data[valueSize-6]
+//           (valueType 8 = UTF-16LE string, 19/21 = little-endian integer)
+static int mov_read_xtra(MOVContext *c, AVIOContext *pb, MOVAtom atom)
+{
+    int64_t end = avio_tell(pb) + atom.size;
+    AVBPrint categories;
+    int have_categories = 0;
+
+    av_bprint_init(&categories, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+    while (avio_tell(pb) + 12 <= end && !avio_feof(pb)) {
+        int64_t entry_start = avio_tell(pb);
+        uint32_t entry_size = avio_rb32(pb);
+        uint32_t name_len   = avio_rb32(pb);
+        int64_t entry_end;
+        char name[64];
+        uint32_t value_count, i;
+        int is_category, is_rating;
+
+        if (entry_size < 12)
+            break;
+        entry_end = entry_start + entry_size;
+        if (entry_end > end)
+            break;
+        if (name_len == 0 || name_len >= sizeof(name)) {
+            avio_seek(pb, entry_end, SEEK_SET);
+            continue;
+        }
+        if (avio_read(pb, name, name_len) != (int)name_len)
+            break;
+        name[name_len] = 0;
+
+        value_count = avio_rb32(pb);
+        is_category = !strcmp(name, "WM/Category");
+        is_rating   = !strcmp(name, "WM/SharedUserRating");
+
+        for (i = 0; i < value_count && avio_tell(pb) + 6 <= entry_end; i++) {
+            int64_t value_start = avio_tell(pb);
+            uint32_t value_size = avio_rb32(pb);
+            uint16_t value_type = avio_rb16(pb);
+
+            if (value_size < 6 || value_start + value_size > entry_end)
+                break;
+
+            if (is_category && value_type == 8) {
+                char buf[1024];
+                avio_get_str16le(pb, value_size - 6, buf, sizeof(buf));
+                if (buf[0]) {
+                    if (have_categories)
+                        av_bprint_chars(&categories, ';', 1);
+                    av_bprintf(&categories, "%s", buf);
+                    have_categories = 1;
+                }
+            } else if (is_rating && (value_type == 19 || value_type == 21)) {
+                uint64_t v = 0;
+                int n = FFMIN((int)(value_size - 6), 8), b;
+                for (b = 0; b < n; b++)
+                    v |= (uint64_t)avio_r8(pb) << (8 * b);
+                av_dict_set_int(&c->fc->metadata, "WM/SharedUserRating", v, 0);
+            }
+            avio_seek(pb, value_start + value_size, SEEK_SET);
+        }
+        avio_seek(pb, entry_end, SEEK_SET);
+    }
+
+    if (have_categories && av_bprint_is_complete(&categories))
+        av_dict_set(&c->fc->metadata, "WM/Category", categories.str, 0);
+
+    av_bprint_finalize(&categories, NULL);
+    return 0;
+}
+
 static const MOVParseTableEntry mov_default_parse_table[] = {
 { MKTAG('A','C','L','R'), mov_read_aclr },
 { MKTAG('A','P','R','G'), mov_read_avid },
@@ -9569,6 +9647,7 @@ static const MOVParseTableEntry mov_default_parse_table[] = {
 { MKTAG('t','r','e','x'), mov_read_trex },
 { MKTAG('t','r','u','n'), mov_read_trun },
 { MKTAG('u','d','t','a'), mov_read_default },
+{ MKTAG('X','t','r','a'), mov_read_xtra }, /* Windows Explorer / Media Player tags & rating */
 { MKTAG('w','a','v','e'), mov_read_wave },
 { MKTAG('e','s','d','s'), mov_read_esds },
 { MKTAG('d','a','c','3'), mov_read_dac3 }, /* AC-3 info */

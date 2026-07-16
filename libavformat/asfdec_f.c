@@ -274,7 +274,22 @@ static void get_tag(AVFormatContext *s, const char *key, int type, int len, int 
         goto finish;
     }
     if (*value)
-        av_dict_set(&s->metadata, key, value, 0);
+        if (!strcmp(key, "WM/Category")) {
+            // Windows stores multiple keywords as separate 'WM/Category'
+            // descriptors, spread across the Extended-Content-Description and
+            // Metadata-Library objects. Append them (';'-separated) instead of
+            // letting each overwrite the previous, so all tags are surfaced.
+            const AVDictionaryEntry *e = av_dict_get(s->metadata, key, NULL, 0);
+            if (e && e->value && e->value[0]) {
+                char *merged = av_asprintf("%s;%s", e->value, value);
+                if (merged)
+                    av_dict_set(&s->metadata, key, merged, AV_DICT_DONT_STRDUP_VAL);
+            } else {
+                av_dict_set(&s->metadata, key, value, 0);
+            }
+        } else {
+            av_dict_set(&s->metadata, key, value, 0);
+        }
 
 finish:
     av_freep(&value);
