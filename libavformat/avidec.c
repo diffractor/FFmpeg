@@ -544,7 +544,10 @@ static int avi_read_header(AVFormatContext *s)
         tag  = avio_rl32(pb);
         size = avio_rl32(pb);
 
-        if (tag == 0 || size == 0)
+        // diffractor: stop on null padding at end of file. A zero-*size* chunk is legal (e.g. an
+        // empty JUNK/data chunk) and must be skipped, not treated as end-of-header - otherwise a
+        // zero-size chunk before 'movi' would leave movi_list unset and break playback.
+        if (tag == 0)
             goto end_of_header; // diffractor
 
         print_tag(s, "tag", tag, size);
@@ -564,9 +567,31 @@ static int avi_read_header(AVFormatContext *s)
                 else
                     avi->movi_end = avi->fsize;
                 av_log(s, AV_LOG_TRACE, "movi end=%"PRIx64"\n", avi->movi_end);
-                if (avio_seek(pb, avi->movi_end, SEEK_SET) < 0) // diffractor
-                    goto end_of_header; // maybe truncated file
-                // goto end_of_header; // diffractor
+
+                // diffractor: the Adobe XMP SDK may append the top-level "_PMX" (XMP) chunk
+                // *after* the movi data when it cannot update it in place. Scan the post-movi
+                // chunks for it, then restore the position to just after the 'movi' id and stop
+                // header parsing exactly like upstream so playback is unaffected. Stop at a nested
+                // RIFF (OpenDML AVIX segment), null padding or EOF. Only when seekable.
+                if (pb->seekable & AVIO_SEEKABLE_NORMAL) {
+                    int64_t movi_data_pos = avio_tell(pb);
+                    if (avio_seek(pb, avi->movi_end, SEEK_SET) >= 0) {
+                        while (!avio_feof(pb)) {
+                            uint32_t xtag  = avio_rl32(pb);
+                            uint32_t xsize = avio_rl32(pb);
+                            if (xtag == 0 || xtag == MKTAG('R', 'I', 'F', 'F'))
+                                break;
+                            if (xtag == MKTAG('_', 'P', 'M', 'X')) {
+                                avi_read_tag(s, NULL, xtag, xsize);
+                                break;
+                            }
+                            if (avio_skip(pb, xsize + (xsize & 1)) < 0)
+                                break;
+                        }
+                    }
+                    avio_seek(pb, movi_data_pos, SEEK_SET);
+                }
+                goto end_of_header; // diffractor: movi marks the data, like upstream
             } else if (tag1 == MKTAG('I', 'N', 'F', 'O'))
                 ff_read_riff_info(s, size - 4);
             else if (tag1 == MKTAG('n', 'c', 'd', 't'))

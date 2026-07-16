@@ -193,6 +193,13 @@ static void print_guid(ff_asf_guid *g)
 #define print_guid(g) while(0)
 #endif
 
+// Adobe XMP is stored in a top-level ASF object identified by this GUID
+// (BE7ACFCB-97A9-42E8-9C71-999491E3AFAC). The object payload is the raw XMP
+// packet. Written by the Adobe XMP SDK; not covered by the base ASF spec.
+static const ff_asf_guid ff_asf_xmp_metadata = {
+    0xCB, 0xCF, 0x7A, 0xBE, 0xA9, 0x97, 0xE8, 0x42, 0x9C, 0x71, 0x99, 0x94, 0x91, 0xE3, 0xAF, 0xAC
+};
+
 static int asf_probe(const AVProbeData *pd)
 {
     /* check file header */
@@ -694,6 +701,27 @@ static int asf_read_marker(AVFormatContext *s)
     return 0;
 }
 
+static int asf_read_xmp(AVFormatContext *s, int64_t gsize)
+{
+    ASFContext *asf = s->priv_data;
+    AVIOContext *pb = s->pb;
+    int64_t len    = gsize - 24; // object size excludes the 16-byte GUID + 8-byte size
+    char *value;
+
+    if (!asf->export_xmp || len <= 0 || len >= INT_MAX)
+        return 0;
+
+    value = av_malloc(len + 1);
+    if (!value)
+        return AVERROR(ENOMEM);
+    if (avio_read(pb, value, len) != len) {
+        av_freep(&value);
+        return AVERROR_INVALIDDATA;
+    }
+    value[len] = 0;
+    return av_dict_set(&s->metadata, "xmp", value, AV_DICT_DONT_STRDUP_VAL);
+}
+
 static int asf_read_header(AVFormatContext *s)
 {
     ASFContext *asf = s->priv_data;
@@ -849,6 +877,34 @@ static int asf_read_header(AVFormatContext *s)
                 }
             }
         }
+    }
+
+    // The Adobe XMP SDK stores the XMP packet in a dedicated ASF object that is
+    // written as the last top-level object, after the Data object. The header
+    // parse above stops at the Data object and never reaches it, so if the input
+    // is seekable walk the post-Data top-level objects to find and read it.
+    if (asf->export_xmp && (pb->seekable & AVIO_SEEKABLE_NORMAL) &&
+        asf->data_object_size != (uint64_t)-1) {
+        int64_t resume    = avio_tell(pb);
+        int64_t file_size = avio_size(pb);
+        int64_t pos       = asf->data_object_offset + asf->data_object_size;
+
+        while (file_size > 0 && pos >= 0 && pos + 24 <= file_size) {
+            ff_asf_guid gx;
+            int64_t obj_size;
+            if (avio_seek(pb, pos, SEEK_SET) != pos)
+                break;
+            ff_get_guid(pb, &gx);
+            obj_size = avio_rl64(pb);
+            if (obj_size < 24)
+                break;
+            if (!ff_guidcmp(&gx, &ff_asf_xmp_metadata)) {
+                asf_read_xmp(s, obj_size);
+                break;
+            }
+            pos += obj_size;
+        }
+        avio_seek(pb, resume, SEEK_SET);
     }
 
     ff_metadata_conv(&s->metadata, NULL, ff_asf_metadata_conv);

@@ -855,6 +855,58 @@ static int amf_parse_object(AVFormatContext *s, AVStream *astream,
 #define TYPE_ONCAPTIONINFO 3
 #define TYPE_UNKNOWN 9
 
+// Adobe XMP is carried in an "onXMPData" script-data tag: an ECMA array whose
+// "liveXML" item holds the raw XMP packet as a short (0x02) or long (0x0C) AMF
+// string. Extract it into s->metadata["xmp"], matching the mov/asf convention.
+static int flv_read_onxmp(AVFormatContext *s, int64_t max_pos)
+{
+    AVIOContext *ioc = s->pb;
+    char name[128];
+    int type;
+
+    type = avio_r8(ioc);
+    if (type == AMF_DATA_TYPE_MIXEDARRAY)
+        avio_skip(ioc, 4); // 32-bit associative-array element count
+    else if (type != AMF_DATA_TYPE_OBJECT)
+        return 0;
+
+    while (avio_tell(ioc) < max_pos - 2) {
+        int name_len = amf_get_string(ioc, name, sizeof(name));
+        int64_t len;
+
+        if (name_len <= 0)
+            break; // end-of-object marker or empty/invalid name
+
+        type = avio_r8(ioc);
+        if (type == AMF_DATA_TYPE_STRING)
+            len = avio_rb16(ioc);
+        else if (type == AMF_DATA_TYPE_LONG_STRING)
+            len = avio_rb32(ioc);
+        else
+            break; // cannot safely skip an unknown value type
+
+        if (!strcmp(name, "liveXML")) {
+            char *value;
+            if (len <= 0 || len >= INT_MAX)
+                return 0;
+            value = av_malloc(len + 1);
+            if (!value)
+                return AVERROR(ENOMEM);
+            if (avio_read(ioc, value, len) != len) {
+                av_freep(&value);
+                return AVERROR_INVALIDDATA;
+            }
+            value[len] = 0;
+            return av_dict_set(&s->metadata, "xmp", value,
+                               AV_DICT_DONT_STRDUP_VAL);
+        }
+
+        avio_skip(ioc, len); // not the item we want
+    }
+
+    return 0;
+}
+
 static int flv_read_metabody(AVFormatContext *s, int64_t next_pos)
 {
     FLVContext *flv = s->priv_data;
@@ -884,6 +936,11 @@ static int flv_read_metabody(AVFormatContext *s, int64_t next_pos)
 
     if (!strcmp(buffer, "onCaptionInfo"))
         return TYPE_ONCAPTIONINFO;
+
+    if (!strcmp(buffer, "onXMPData")) {
+        flv_read_onxmp(s, next_pos);
+        return 0;
+    }
 
     if (strcmp(buffer, "onMetaData") && strcmp(buffer, "onCuePoint") && strcmp(buffer, "|RtmpSampleAccess")) {
         av_log(s, AV_LOG_DEBUG, "Unknown type %s\n", buffer);
