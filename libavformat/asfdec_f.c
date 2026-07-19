@@ -911,7 +911,7 @@ static int asf_read_header(AVFormatContext *s)
                 break;
             ff_get_guid(pb, &gx);
             obj_size = avio_rl64(pb);
-            if (obj_size < 24)
+            if (obj_size < 24 || obj_size > file_size - pos)
                 break;
             if (!ff_guidcmp(&gx, &ff_asf_xmp_metadata)) {
                 asf_read_xmp(s, obj_size);

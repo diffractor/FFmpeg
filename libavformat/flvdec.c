@@ -864,30 +864,46 @@ static int flv_read_onxmp(AVFormatContext *s, int64_t max_pos)
     char name[128];
     int type;
 
+    if (avio_tell(ioc) >= max_pos)
+        return 0;
     type = avio_r8(ioc);
-    if (type == AMF_DATA_TYPE_MIXEDARRAY)
+    if (type == AMF_DATA_TYPE_MIXEDARRAY) {
+        if (max_pos - avio_tell(ioc) < 4)
+            return 0;
         avio_skip(ioc, 4); // 32-bit associative-array element count
-    else if (type != AMF_DATA_TYPE_OBJECT)
+    } else if (type != AMF_DATA_TYPE_OBJECT)
         return 0;
 
-    while (avio_tell(ioc) < max_pos - 2) {
-        int name_len = amf_get_string(ioc, name, sizeof(name));
+    while (max_pos - avio_tell(ioc) >= 2) {
+        int name_len = avio_rb16(ioc);
         int64_t len;
 
         if (name_len <= 0)
             break; // end-of-object marker or empty/invalid name
+		if (name_len >= sizeof(name) || name_len > max_pos - avio_tell(ioc))
+			break;
+		if (avio_read(ioc, name, name_len) != name_len)
+			break;
+		name[name_len] = 0;
 
+		if (avio_tell(ioc) >= max_pos)
+			break;
         type = avio_r8(ioc);
-        if (type == AMF_DATA_TYPE_STRING)
+		if (type == AMF_DATA_TYPE_STRING) {
+			if (max_pos - avio_tell(ioc) < 2)
+				break;
             len = avio_rb16(ioc);
-        else if (type == AMF_DATA_TYPE_LONG_STRING)
+		} else if (type == AMF_DATA_TYPE_LONG_STRING) {
+			if (max_pos - avio_tell(ioc) < 4)
+				break;
             len = avio_rb32(ioc);
-        else
+		} else
             break; // cannot safely skip an unknown value type
 
         if (!strcmp(name, "liveXML")) {
             char *value;
-            if (len <= 0 || len >= INT_MAX)
+            int64_t remaining = max_pos - avio_tell(ioc);
+            if (len <= 0 || len >= INT_MAX || remaining < 0 || len > remaining)
                 return 0;
             value = av_malloc(len + 1);
             if (!value)
@@ -901,6 +917,8 @@ static int flv_read_onxmp(AVFormatContext *s, int64_t max_pos)
                                AV_DICT_DONT_STRDUP_VAL);
         }
 
+        if (len > max_pos - avio_tell(ioc))
+            break;
         avio_skip(ioc, len); // not the item we want
     }
 
