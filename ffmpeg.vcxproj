@@ -1595,405 +1595,405 @@
   </ItemGroup>
   <ItemGroup>
     <NASM Include="libavcodec\x86\aacencdsp.asm" />
-    <nasm Include="libavcodec\x86\aacpsdsp.asm">
+    <NASM Include="libavcodec\x86\aacpsdsp.asm">
       <PreIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)config-x86.asm</PreIncludeFiles>
       <PreIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)config-x86.asm</PreIncludeFiles>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ac3dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\ac3dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ac3dsp_downmix.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\ac3dsp_downmix.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\alacdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
     </NASM>
     <NASM Include="libavcodec\x86\apv_dsp.asm" />
-    <nasm Include="libavcodec\x86\audiodsp.asm">
+    <NASM Include="libavcodec\x86\audiodsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\blockdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\blockdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\bswapdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\bswapdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\cavsidct.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\cavsidct.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\cavs_qpel.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\cavs_qpel.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\cfhdencdsp.asm" />
-    <nasm Include="libavcodec\x86\dcadsp.asm">
+    <NASM Include="libavcodec\x86\dcadsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\dct32.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\dct32.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\dirac_dwt.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\dirac_dwt.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\diracdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\diracdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\dnxhdenc.asm" />
-    <nasm Include="libavcodec\x86\exrdsp.asm">
+    <NASM Include="libavcodec\x86\exrdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\flacdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\flacdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\fmtconvert.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\fmtconvert.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\fpel.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\fpel.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\g722dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\g722dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h263_loopfilter.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h263_loopfilter.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_chromamc.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_chromamc.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_chromamc_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_chromamc_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_deblock.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_deblock.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_deblock_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_deblock_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_idct.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_idct.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_idct_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_idct_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_intrapred.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_intrapred.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_intrapred_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_intrapred_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_qpel_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_qpel_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_qpel_8bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_qpel_8bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_weight.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_weight.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_weight_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\h264_weight_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h26x\h2656_inter.asm" />
+    </NASM>
+    <NASM Include="libavcodec\x86\h26x\h2656_inter.asm" />
     <NASM Include="libavcodec\x86\h26x\h2656_sao.asm" />
     <NASM Include="libavcodec\x86\h26x\h2656_sao_10bit.asm" />
-    <nasm Include="libavcodec\x86\hevc\add_res.asm">
+    <NASM Include="libavcodec\x86\hevc\add_res.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\deblock.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hevc\deblock.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\dequant.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hevc\dequant.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\idct.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hevc\idct.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\mc.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hevc\mc.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\sao.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hevc\sao.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\sao_10bit.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hevc\sao_10bit.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hpeldsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\hpeldsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\huffyuvdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\huffyuvdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\huffyuvencdsp.asm" />
-    <nasm Include="libavcodec\x86\idctdsp.asm">
+    <NASM Include="libavcodec\x86\idctdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\imdct36.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\imdct36.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\jpeg2000dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\jpeg2000dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\lossless_audiodsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\lossless_audiodsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\lossless_videodsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\lossless_videodsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\lossless_videoencdsp.asm" />
-    <nasm Include="libavcodec\x86\me_cmp.asm">
+    <NASM Include="libavcodec\x86\me_cmp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\mlpdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\mlpdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\mpegvideoencdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\mpegvideoencdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\pixblockdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\pixblockdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\pngdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\pngdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\proresdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\proresdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\qpel.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\qpel.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\qpeldsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\qpeldsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\rv34dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\rv34dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\rv40dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\rv40dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\sbrdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\sbrdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\simple_idct.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\simple_idct.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\svq1enc.asm" />
-    <nasm Include="libavcodec\x86\synth_filter.asm">
+    <NASM Include="libavcodec\x86\synth_filter.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\takdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\takdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ttadsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\ttadsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\utvideodsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\utvideodsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\v210.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\v210.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\v210enc.asm" />
-    <nasm Include="libavcodec\x86\vc1dsp_loopfilter.asm">
+    <NASM Include="libavcodec\x86\vc1dsp_loopfilter.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vc1dsp_mc.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vc1dsp_mc.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\videodsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\videodsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vorbisdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vorbisdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp3dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp3dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp6dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp6dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp8dsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp8dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp8dsp_loopfilter.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp8dsp_loopfilter.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9intrapred.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9intrapred.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9intrapred_16bpp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9intrapred_16bpp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9itxfm.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9itxfm.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9itxfm_16bpp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9itxfm_16bpp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
     <NASM Include="libavcodec\x86\vp9itxfm_16bpp_avx512.asm" />
     <NASM Include="libavcodec\x86\vp9itxfm_avx512.asm" />
     <NASM Include="libavcodec\x86\vp9itxfm_avx2.asm" />
-    <nasm Include="libavcodec\x86\vp9lpf.asm">
+    <NASM Include="libavcodec\x86\vp9lpf.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9lpf_16bpp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9lpf_16bpp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9mc.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9mc.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9mc_16bpp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\vp9mc_16bpp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\alf.asm" />
-    <nasm Include="libavcodec\x86\vvc\mc.asm" />
-    <nasm Include="libavcodec\x86\vvc\sad.asm" />
-    <nasm Include="libavcodec\x86\vvc\of.asm" />
+    </NASM>
+    <NASM Include="libavcodec\x86\vvc\alf.asm" />
+    <NASM Include="libavcodec\x86\vvc\mc.asm" />
+    <NASM Include="libavcodec\x86\vvc\sad.asm" />
+    <NASM Include="libavcodec\x86\vvc\of.asm" />
     <NASM Include="libavcodec\x86\vvc\sao.asm" />
-    <nasm Include="libavcodec\x86\vvc\sao_10bit.asm" />
-    <nasm Include="libavcodec\x86\vvc\dmvr.asm" />
-    <nasm Include="libavcodec\x86\xvididct.asm">
+    <NASM Include="libavcodec\x86\vvc\sao_10bit.asm" />
+    <NASM Include="libavcodec\x86\vvc\dmvr.asm" />
+    <NASM Include="libavcodec\x86\xvididct.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\cpuid.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\cpuid.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\emms.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\emms.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\fixed_dsp.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\fixed_dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\aes.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\aes.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\pixelutils.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\pixelutils.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\float_dsp.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\float_dsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\imgutils.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\imgutils.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\lls.asm">
+    </NASM>
+    <NASM Include="libavutil\x86\lls.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswresample\x86\audio_convert.asm">
+    </NASM>
+    <NASM Include="libswresample\x86\audio_convert.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswresample\x86\rematrix.asm">
+    </NASM>
+    <NASM Include="libswresample\x86\rematrix.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswresample\x86\resample.asm">
+    </NASM>
+    <NASM Include="libswresample\x86\resample.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\input.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\input.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\output.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\output.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\range_convert.asm" />
-    <nasm Include="libswscale\x86\rgb_2_rgb.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\range_convert.asm" />
+    <NASM Include="libswscale\x86\rgb_2_rgb.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\scale.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\scale.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config-x64.h" />
@@ -2191,64 +2191,64 @@
     <ClInclude Include="libavutil\version.h" />
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavcodec\x86\celt_pvq_search.asm">
+    <NASM Include="libavcodec\x86\celt_pvq_search.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavcodec\x86\opusdsp.asm">
+    <NASM Include="libavcodec\x86\opusdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libswscale\x86\yuv_2_rgb.asm">
+    <NASM Include="libswscale\x86\yuv_2_rgb.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libswscale\x86\yuv2yuvX.asm">
+    <NASM Include="libswscale\x86\yuv2yuvX.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavcodec\x86\cfhddsp.asm">
+    <NASM Include="libavcodec\x86\cfhddsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libswscale\x86\scale_avx2.asm">
+    <NASM Include="libswscale\x86\scale_avx2.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavutil\x86\tx_float.asm">
+    <NASM Include="libavutil\x86\tx_float.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavcodec\x86\flac_dsp_gpl.asm">
+    <NASM Include="libavcodec\x86\flac_dsp_gpl.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\lpc.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\lpc.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\sbcdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\sbcdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ttaencdsp.asm">
+    </NASM>
+    <NASM Include="libavcodec\x86\ttaencdsp.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -2417,14 +2417,14 @@
     <BuildLog>
       <Path>$(IntDir)$(MSBuildProjectName).log</Path>
     </BuildLog>
-    <nasm>
+    <NASM>
       <IncludePaths>$(ProjectDir).;%(RootDir)%(Directory).</IncludePaths>
-    </nasm>
-    <nasm>
+    </NASM>
+    <NASM>
       <PreIncludeFiles>$(ProjectDir)config-x86.asm</PreIncludeFiles>
       <PreprocessorDefinitions>PREFIX</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(RelativeDir)%(FileName)-asm.obj</ObjectFileName>
-    </nasm>
+    </NASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -2474,14 +2474,14 @@
     <BuildLog>
       <Path>$(IntDir)$(MSBuildProjectName).log</Path>
     </BuildLog>
-    <nasm>
+    <NASM>
       <IncludePaths>$(ProjectDir).;%(RootDir)%(Directory).</IncludePaths>
-    </nasm>
-    <nasm>
+    </NASM>
+    <NASM>
       <PreIncludeFiles>$(ProjectDir)config-x86.asm</PreIncludeFiles>
       <PreprocessorDefinitions>PREFIX</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(RelativeDir)%(FileName)-asm.obj</ObjectFileName>
-    </nasm>
+    </NASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -2526,13 +2526,13 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <nasm>
+    <NASM>
       <IncludePaths>$(ProjectDir).;%(RootDir)%(Directory).</IncludePaths>
-    </nasm>
-    <nasm>
+    </NASM>
+    <NASM>
       <PreIncludeFiles>$(ProjectDir)config-x64.asm</PreIncludeFiles>
       <ObjectFileName>$(IntDir)%(RelativeDir)%(FileName)-asm.obj</ObjectFileName>
-    </nasm>
+    </NASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -2624,13 +2624,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <nasm>
+    <NASM>
       <IncludePaths>$(ProjectDir).;%(RootDir)%(Directory).</IncludePaths>
-    </nasm>
-    <nasm>
+    </NASM>
+    <NASM>
       <PreIncludeFiles>$(ProjectDir)config-x64.asm</PreIncludeFiles>
       <ObjectFileName>$(IntDir)%(RelativeDir)%(FileName)-asm.obj</ObjectFileName>
-    </nasm>
+    </NASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -2777,455 +2777,129 @@
     <ClCompile Include="libswscale\x86\ops.c" />
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavcodec\x86\aacpsdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ac3dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ac3dsp_downmix.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\audiodsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\blockdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\bswapdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\cavs_qpel.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\cavsidct.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\cfhddsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\dcadsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\dct32.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\dirac_dwt.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\diracdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\exrdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\flacdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\fmtconvert.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\fpel.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\g722dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h263_loopfilter.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_chromamc.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_chromamc_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_deblock.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_deblock_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_idct.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_idct_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_intrapred.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_intrapred_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_qpel_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_qpel_8bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_weight.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h264_weight_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\h26x\h2656_inter.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\add_res.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\deblock.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\dequant.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\idct.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\mc.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\sao.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hevc\sao_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\hpeldsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\huffyuvdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\idctdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\imdct36.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\jpeg2000dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\lossless_audiodsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\lossless_videodsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\me_cmp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\mlpdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\mpegvideoencdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\opusdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\pngdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\proresdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\qpel.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\qpeldsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\rv34dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\rv40dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\sbrdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\snowdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\synth_filter.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\takdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\ttadsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\utvideodsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\v210.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vc1dsp_inv_trans.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vc1dsp_loopfilter.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vc1dsp_mc.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\videodsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vorbisdsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp3dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp6dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp8dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp8dsp_loopfilter.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9intrapred.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9intrapred_16bpp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9itxfm.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9itxfm_16bpp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9lpf.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9lpf_16bpp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9mc.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vp9mc_16bpp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\alf.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\dmvr.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\mc.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\of.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\sad.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\vvc\sao_10bit.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavcodec\x86\xvididct.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\aes.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\cpuid.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\crc.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\fixed_dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\float_dsp.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\imgutils.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\lls.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libavutil\x86\tx_float.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswresample\x86\audio_convert.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswresample\x86\rematrix.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswresample\x86\resample.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\input.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\output.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\range_convert.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\rgb_2_rgb.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\scale.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\scale_avx2.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\yuv2yuvX.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\yuv_2_rgb.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <NASM Include="libavcodec\x86\snowdsp.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+    </NASM>
+
+
+
+
+    <NASM Include="libavcodec\x86\vc1dsp_inv_trans.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+    </NASM>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <NASM Include="libavutil\x86\crc.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+    </NASM>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </ItemGroup>
   <ItemGroup>
-    <nasm Include="libavcodec\x86\simple_idct10.asm">
+    <NASM Include="libavcodec\x86\simple_idct10.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\ops_common.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\ops_common.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\ops_float.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\ops_float.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
-    <nasm Include="libswscale\x86\ops_int.asm">
+    </NASM>
+    <NASM Include="libswscale\x86\ops_int.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-    </nasm>
+    </NASM>
   </ItemGroup>
 </Project>
