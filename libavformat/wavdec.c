@@ -608,6 +608,22 @@ static int wav_read_header(AVFormatContext *s)
                 }
             }
             break;
+        case MKTAG('_', 'P', 'M', 'X'):
+            /* Adobe XMP packet; renamed to "xmp" by ff_riff_info_conv below. */
+            if (size > 0 && size < INT_MAX &&
+                (avio_size(pb) < 0 || size <= avio_size(pb) - avio_tell(pb))) {
+                char *value = av_malloc(size + 1);
+                if (value) {
+                    if (avio_read(pb, value, size) == size) {
+                        value[size] = 0;
+                        av_dict_set(&s->metadata, "_PMX", value,
+                                    AV_DICT_DONT_STRDUP_VAL);
+                    } else {
+                        av_freep(&value);
+                    }
+                }
+            }
+            break;
         }
 
         /* seek to next tag unless we know that we'll run into EOF */
