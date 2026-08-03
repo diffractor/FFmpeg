@@ -2150,6 +2150,17 @@ int ff_h264_queue_decode_slice(H264Context *h, const H2645NAL *nal)
             (h->avctx->skip_frame >= AVDISCARD_NONINTRA && sl->slice_type_nos != AV_PICTURE_TYPE_I) ||
             (h->avctx->skip_frame >= AVDISCARD_NONKEY && h->nal_unit_type != H264_NAL_IDR_SLICE && h->sei.recovery_point.recovery_frame_cnt < 0) ||
             h->avctx->skip_frame >= AVDISCARD_ALL) {
+            /* A caller that discards every frame still needs the stream characterised. Codecs
+             * advertising FF_CODEC_CAP_SKIP_FRAME_FILL_PARAM do this; H.264 fills avctx inside
+             * h264_field_start, which is below this skip, so apply the active SPS here instead.
+             * Only when nothing is known yet, so callers that already decoded are unaffected. */
+            if (first_slice && h->avctx->pix_fmt == AV_PIX_FMT_NONE &&
+                h264_init_ps(h, sl, first_slice) >= 0) {
+                const SPS *const sps = h->ps.sps;
+                if (sps->bitstream_restriction_flag &&
+                    h->avctx->has_b_frames < sps->num_reorder_frames)
+                    h->avctx->has_b_frames = sps->num_reorder_frames;
+            }
             return 0;
         }
     }

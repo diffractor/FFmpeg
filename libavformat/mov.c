@@ -399,7 +399,9 @@ static int mov_read_udta_string(MOVContext *c, AVIOContext *pb, MOVAtom atom)
     case MKTAG( 'p','g','a','p'): key = "gapless_playback";
         parse = mov_metadata_int8_no_padding; break;
     case MKTAG( 'p','u','r','d'): key = "purchase_date"; break;
-    case MKTAG( 'r','t','n','g'): key = "rating";
+    // diffractor: 'rtng' is the iTunes content-advisory flag (0 none, 1 explicit, 2 clean),
+    // not a star rating, so it must not be normalised onto the shared "rating" key.
+    case MKTAG( 'r','t','n','g'): key = "itunes_advisory";
         parse = mov_metadata_int8_no_padding; break;
     case MKTAG( 's','o','a','a'): key = "sort_album_artist"; break;
     case MKTAG( 's','o','a','l'): key = "sort_album";   break;
