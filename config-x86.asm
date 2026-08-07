@@ -213,7 +213,8 @@
 %define HAVE_MMI_INLINE 0
 %define HAVE_LSX_INLINE 0
 %define HAVE_LASX_INLINE 0
-%define HAVE_ALIGNED_STACK 1
+; MSVC x86 guarantees only 4-byte stack alignment and cannot realign on entry.
+%define HAVE_ALIGNED_STACK 0
 %define HAVE_FAST_64BIT 0
 %define HAVE_FAST_CLZ 1
 %define HAVE_FAST_CMOV 1
