@@ -1,6 +1,5 @@
 static const FFBitStreamFilter * const bitstream_filters[] = {
     &ff_aac_adtstoasc_bsf,
-    &ff_ahx_to_mp2_bsf,
     &ff_apv_metadata_bsf,
     &ff_av1_frame_merge_bsf,
     &ff_av1_frame_split_bsf,
