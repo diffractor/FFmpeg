@@ -40,12 +40,8 @@
     <ClCompile Include="libavcodec\aacenctab.c" />
     <ClCompile Include="libavcodec\aacenc_is.c" />
     <ClCompile Include="libavcodec\aacenc_tns.c" />
-    <ClCompile Include="libavcodec\aacps.c" />
-    <ClCompile Include="libavcodec\aacpsdata.c" />
     <ClCompile Include="libavcodec\aacpsy.c" />
     <ClCompile Include="libavcodec\aacps_common.c" />
-    <ClCompile Include="libavcodec\aacps_fixed_tablegen.c" />
-    <ClCompile Include="libavcodec\aacps_tablegen.c" />
     <ClCompile Include="libavcodec\aac\aacdec.c" />
     <ClCompile Include="libavcodec\aac\aacdec_ac.c" />
     <ClCompile Include="libavcodec\aac\aacdec_fixed.c" />
