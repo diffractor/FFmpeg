@@ -29,9 +29,10 @@
  * add sane pulse detection
  ***********************************/
 #include <float.h>
+#include <math.h>
 
 #include "libavutil/channel_layout.h"
-#include "libavutil/libm.h"
+#include "libavutil/crc.h"
 #include "libavutil/float_dsp.h"
 #include "libavutil/mem.h"
 #include "libavutil/opt.h"
@@ -80,6 +81,9 @@
  *     SCE.0 SCE.15 is OK per spec; BUT it won't be decoded by our AAC decoder
  *     which at this time requires that indices fully cover some range starting
  *     from 0 (SCE.1 SCE.0 is OK but not SCE.0 SCE.15).
+ *
+ * - height: 0 for a base layer element, 1 for a top layer element, 2 for a bottom
+ *           layer element.
  *
  * - config_map: total number of elements and their types. Beware, the way the
  *               types are ordered impacts the final channel ordering.
@@ -296,6 +300,134 @@ static const AACPCEInfo aac_pce_configs[] = {
         .config_map = { 5, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_SCE },
         .reorder_map = { 2, 0, 1, 6, 7, 3, 4, 5 },
     },
+    {
+        .layout = AV_CHANNEL_LAYOUT_5POINT1POINT2,
+        .num_ele = { 3, 0, 1, 1 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1 }, },
+        .index = { { 0, 0, 2 }, { 0 }, { 1 }, { 0 }, },
+        .height = { { 0, 0, 1 }, { 0 }, { 0 } },
+        .config_map = { 5, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE },
+        .reorder_map = { 2, 0, 1, 4, 5, 3, 6, 7 },
+    },
+    {
+        // ITU-R BS.2051-3 Sound System C
+        .layout = AV_CHANNEL_LAYOUT_5POINT1POINT2_BACK,
+        .num_ele = { 3, 0, 1, 1 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1 }, },
+        .index = { { 0, 0, 2 }, { 0 }, { 1 }, { 0 }, },
+        .height = { { 0, 0, 1 }, { 0 }, { 0 } },
+        .config_map = { 5, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE },
+        .reorder_map = { 2, 0, 1, 4, 5, 3, 6, 7 },
+    },
+    {
+        .layout = AV_CHANNEL_LAYOUT_5POINT1POINT4,
+        .num_ele = { 3, 0, 2, 1 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1, 1 }, },
+        .index = { { 0, 0, 2 }, { 0 }, { 1, 3 }, { 0 }, },
+        .height = { { 0, 0, 1 }, { 0 }, { 0, 1 } },
+        .config_map = { 6, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 2, 0, 1, 4, 5, 3, 6, 7, 8, 9 },
+    },
+        // ITU-R BS.2051-3 Sound System D
+    {
+        .layout = {
+            .nb_channels = 10,
+            .order       = AV_CHANNEL_ORDER_NATIVE,
+            .u.mask      = AV_CH_LAYOUT_5POINT1POINT2_BACK | AV_CH_TOP_BACK_LEFT | AV_CH_TOP_BACK_RIGHT,
+        },
+        .num_ele = { 3, 0, 2, 1 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1, 1 }, },
+        .index = { { 0, 0, 2 }, { 0 }, { 1, 3 }, { 0 }, },
+        .height = { { 0, 0, 1 }, { 0 }, { 0, 1 } },
+        .config_map = { 6, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 2, 0, 1, 4, 5, 3, 6, 7, 8, 9 },
+    },
+    {
+        // ITU-R BS.2051-3 Sound System E
+        .layout = {
+            .nb_channels = 11,
+            .order       = AV_CHANNEL_ORDER_NATIVE,
+            .u.mask      = AV_CH_LAYOUT_5POINT1POINT4 | AV_CH_BOTTOM_FRONT_CENTER,
+        },
+        .num_ele = { 4, 0, 2, 1 },
+        .pairing = { { 0, 1, 1, 0 }, { 0 }, { 1, 1 }, },
+        .index = { { 0, 0, 2, 1 }, { 0 }, { 1, 3 }, { 0 }, },
+        .height = { { 0, 0, 1, 2 }, { 0 }, { 0, 1 } },
+        .config_map = { 7, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE, TYPE_CPE, TYPE_SCE },
+        .reorder_map = { 2, 0, 1, 4, 5, 3, 6, 7, 8, 9, 10 },
+    },
+    {
+        .layout = AV_CHANNEL_LAYOUT_7POINT1POINT2,
+        .num_ele = { 3, 0, 2, 1 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1, 1 }, },
+        .index = { { 0, 0, 3 }, { 0 }, { 2, 1 }, { 0 } },
+        .height = { { 0, 0, 1 }, { 0 }, { 0, 0 } },
+        .config_map = { 6, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE },
+        .reorder_map = { 2, 0, 1, 4, 5, 6, 7, 3, 8, 9 },
+    },
+    {
+        // ITU-R BS.2051-3 Sound System F
+        .layout = AV_CHANNEL_LAYOUT_7POINT2POINT3,
+        .num_ele = { 3, 0, 3, 2 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1, 1, 0 }, },
+        .index = { { 0, 0, 3 }, { 0 }, { 2, 1, 1 }, { 0, 1 } },
+        .height = { { 0, 0, 1 }, { 0 }, { 0, 0, 1 } },
+        .config_map = { 8, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_LFE, TYPE_CPE, TYPE_SCE },
+        .reorder_map = { 2, 0, 1, 4, 5, 6, 7, 3, 11, 8, 9, 10 },
+    },
+    {
+        // ITU-R BS.2051-3 Sound System J
+        .layout = AV_CHANNEL_LAYOUT_7POINT1POINT4,
+        .num_ele = { 3, 0, 3, 1 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1, 1, 1 }, },
+        .index = { { 0, 0, 3 }, { 0 }, { 2, 1, 4 }, { 0 } },
+        .height = { { 0, 0, 1 }, { 0 }, { 0, 0, 1 } },
+        .config_map = { 7, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 2, 0, 1, 4, 5, 6, 7, 3, 8, 9, 10, 11 },
+    },
+    {
+        // ITU-R BS.2051-3 Sound System G
+        .layout = AV_CHANNEL_LAYOUT_9POINT1POINT4,
+        .num_ele = { 4, 0, 3, 1 },
+        .pairing = { { 0, 1, 1, 1 }, { 0 }, { 1, 1, 1 }, },
+        .index = { { 0, 0, 1, 4 }, { 0 }, { 2, 3, 5 }, { 0 } },
+        .height = { { 0, 0, 0, 1 }, { 0 }, { 0, 0, 1 } },
+        .config_map = { 8, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 2, 6, 7, 0, 1, 8, 9, 4, 5, 3, 10, 11, 12, 13 },
+    },
+    {
+        .layout = AV_CHANNEL_LAYOUT_9POINT1POINT6,
+        .num_ele = { 4, 1, 3, 1 },
+        .pairing = { { 0, 1, 1, 1 }, { 1 }, { 1, 1, 1 }, },
+        .index = { { 0, 0, 1, 4 }, { 5 }, { 2, 3, 6 }, { 0 } },
+        .height = { { 0, 0, 0, 1 }, { 1 }, { 0, 0, 1 } },
+        .config_map = { 9, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_LFE, TYPE_CPE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 2, 6, 7, 0, 1, 8, 9, 4, 5, 3, 10, 11, 14, 15, 12, 13 },
+    },
+    {
+        .layout = AV_CHANNEL_LAYOUT_AMBISONIC_FIRST_ORDER,
+        .num_ele = { 1, 0, 1, 0 },
+        .pairing = { { 1 }, { 0 }, { 1 }, },
+        .index = { { 0 }, { 0 }, { 1 } },
+        .config_map = { 2, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 0, 1, 2, 3 },
+    },
+    {
+        .layout = { .order = AV_CHANNEL_ORDER_AMBISONIC, .nb_channels = 9 },
+        .num_ele = { 3, 0, 2, 0 },
+        .pairing = { { 0, 1, 1 }, { 0 }, { 1, 1 }, },
+        .index = { { 0, 0, 1 }, { 0 }, { 2, 3 }, },
+        .config_map = { 5, TYPE_SCE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 2, 5, 6, 0, 1, 7, 8, 3, 4 },
+    },
+    {
+        .layout = { .order = AV_CHANNEL_ORDER_AMBISONIC, .nb_channels = 16 },
+        .num_ele = { 4, 0, 4, 0 },
+        .pairing = { { 1, 1, 1, 1 }, { 0 }, { 1, 1, 1, 1 }, },
+        .index = { { 0, 1, 2, 3 }, { 0 }, { 4, 5, 6, 7 }, },
+        .config_map = { 8, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE, TYPE_CPE },
+        .reorder_map = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+    },
 };
 
 static void put_pce(PutBitContext *pb, AVCodecContext *avctx)
@@ -331,8 +463,28 @@ static void put_pce(PutBitContext *pb, AVCodecContext *avctx)
     }
 
     align_put_bits(pb);
-    put_bits(pb, 8, strlen(aux_data));
-    ff_put_string(pb, aux_data, 0);
+    if (s->needs_height_ext) {
+        const AVCRC *crc_ctx = av_crc_get_table(AV_CRC_8_ATM);
+        PutBitContext height_pb;
+        uint8_t buf[16];
+        int bits = 8 + pce->num_ele[0] * 2 + pce->num_ele[1] * 2 + pce->num_ele[2] * 2;
+        int bytes = (bits + 7) / 8;
+
+        init_put_bits(&height_pb, buf, bytes);
+        put_bits(&height_pb, 8, 0xAC);
+        for (i = 0; i < 3; i++)
+            for (j = 0; j < pce->num_ele[i]; j++)
+                put_bits(&height_pb, 2, pce->height[i][j]);
+        flush_put_bits(&height_pb);
+
+        put_bits(pb, 8, bytes + 1);
+        ff_copy_bits(pb, buf, bits);
+        align_put_bits(pb);
+        put_bits(pb, 8, av_crc(crc_ctx, 0xFF, buf, bytes));
+    } else {
+        put_bits(pb, 8, strlen(aux_data));
+        ff_put_string(pb, aux_data, 0);
+    }
 }
 
 /**
@@ -601,6 +753,15 @@ static void apply_intensity_stereo(ChannelElement *cpe)
 /* PNS-stereo gate: substitute only clearly-decorrelated (wide) bands. */
 #define NMR_PNS_STEREO_DECORR 0.6f
 
+/* M/S balance gate: no M/S on bands panned harder than this energy ratio */
+#define NMR_MS_BALANCE 0.25f
+
+/* Perceptual I/S: highly correlated long-window bands above this frequency
+ * take I/S at this image-error budget regardless of rate pressure */
+#define NMR_IS_PERC_FREQ 8000.0f
+#define NMR_IS_PERC_CORR 0.85f
+#define NMR_IS_PERC_GATE 50.0f
+
 /* Recode one band's window group as mid+side in place. */
 static void nmr_apply_ms_band(AACEncContext *s, ChannelElement *cpe,
                               int w, int g, int start, int len, int gl)
@@ -720,7 +881,8 @@ static void nmr_decide_stereo(AACEncContext *s, ChannelElement *cpe)
      * not admit it). Unengaged candidates fall back to M/S. */
     float is_ramp = s->nmr ? s->nmr->press *
         av_clipf((s->nmr->lam_floor - 40.0f) / (120.0f - 40.0f), 0.0f, 1.0f) : 0.0f;
-    const int allow_is = s->options.intensity_stereo && is_ramp > 0.0f;
+    /* perceptual I/S (below) makes candidacy pressure-independent */
+    const int allow_is = s->options.intensity_stereo;
 
     const int pidx = (s->cur_channel >> 1) & 15;
     const int decoupled = s->psy.pair_decoupled[pidx];
@@ -779,6 +941,18 @@ static void nmr_decide_stereo(AACEncContext *s, ChannelElement *cpe)
             float eqgate = NMR_MS_EQUIV * (prev == 1 ? 1.5f : 1.0f);   /* stay-until es>0.75em */
             /* I/S = lossy economy: image-error budget scales with pressure */
             float imgate = NMR_IS_IMG_GATE * is_ramp * (prev == 2 ? NMR_STICKY : 1.0f);
+            /* Perceptual I/S (metric-blind by design - Zimtohrli penalizes
+             * even sub-mask image error, ears above ~8k do not hear
+             * interaural fine structure): engage on genuinely intensity-
+             * panned HF - high inter-channel correlation, long windows,
+             * sticky - regardless of rate pressure. Freed bits are judged
+             * by the sub-8k spectrum; the image itself is judged by ears. */
+            if (cpe->ch[0].ics.num_windows != 8 && ener0 > FLT_MIN && ener1 > FLT_MIN) {
+                float corr = dot / sqrtf(ener0 * ener1);
+                if (start * freq_mult > NMR_IS_PERC_FREQ &&
+                    fabsf(corr) > NMR_IS_PERC_CORR * (prev == 2 ? 0.9f : 1.0f))
+                    imgate = FFMAX(imgate, NMR_IS_PERC_GATE * (prev == 2 ? NMR_STICKY : 1.0f));
+            }
             float es_d = es_tot, em_d = em_tot;
             if (s->nmr) {
                 float *ees = &s->nmr->sema_es[pi][sidx];
@@ -790,10 +964,14 @@ static void nmr_decide_stereo(AACEncContext *s, ChannelElement *cpe)
                 }
                 es_d = *ees; em_d = *eem;
             }
+            /* Balance gate: M/S has no coding gain on a hard-panned band
+             * (|S| ~ |M|), and M/S quantization noise decorrelates across
+             * the unfold, smearing the panned source into the far channel. */
+            int bal_ok = FFMIN(ener0, ener1) > NMR_MS_BALANCE * FFMAX(ener0, ener1);
             int ms_would = s->options.mid_side &&
                            (s->options.mid_side == 1 ||
-                            es_d < eqgate * em_d ||
-                            es_tot < NMR_MS_MASK  * thr_g);
+                            ((es_d < eqgate * em_d ||
+                              es_tot < NMR_MS_MASK  * thr_g) && bal_ok));
             int ms_ok = ms_would && !decoupled;
             float scale, sr_, imgratio; int p;
             /* I/S competes with M/S above the frequency limit (candidacy must
@@ -890,7 +1068,16 @@ static void encode_band_info(AACEncContext *s, SingleChannelElement *sce)
         s->coder->set_special_band_scalefactors(s, sce);
 
     for (w = 0; w < sce->ics.num_windows; w += sce->ics.group_len[w])
-        s->coder->encode_window_bands_info(s, sce, w, sce->ics.group_len[w], s->lambda);
+        {
+            /* the sectioning trellis must trade section bits against
+             * spectral bits at the coder's REAL operating lambda; the
+             * NMR outer-loop lambda is a static 120 */
+            float slam = s->lambda;
+            if (s->options.coder == AAC_CODER_NMR && s->nmr &&
+                s->nmr->lam_slew > 0.0f)
+                slam = s->nmr->lam_slew;
+            s->coder->encode_window_bands_info(s, sce, w, sce->ics.group_len[w], slam);
+        }
 }
 
 /**
@@ -1169,6 +1356,12 @@ static int aac_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                     max = FFMAX(max, fabsf(wbuf[j]));
                 wi[ch].clipping[w] = max;
             }
+            /* Pre-attenuating hot frames costs 0.45 dB of level accuracy on
+             * loud masters; float decoders don't clip, so the NMR coder
+             * keeps levels exact. */
+            if (s->options.coder == AAC_CODER_NMR)
+                for (w = 0; w < ics->num_windows; w++)
+                    wi[ch].clipping[w] = 0;
             for (w = 0; w < ics->num_windows; w++) {
                 if (wi[ch].clipping[w] > CLIP_AVOIDANCE_FACTOR) {
                     ics->window_clipping[w] = 1;
@@ -1344,8 +1537,21 @@ static int aac_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
         }
 
         if (avctx->flags & AV_CODEC_FLAG_QSCALE) {
-            /* When using a constant Q-scale, don't mess with lambda */
-            break;
+            /* When using a constant Q-scale, don't mess with lambda, unless
+             * the frame does not fit the decoder buffer: retry coarser (the
+             * coders' legality caps shrink with lambda) */
+            frame_bits = put_bits_count(&s->pb);
+            if (frame_bits < 6144 * s->channels - 3 || its >= 16)
+                break;
+            s->lambda *= FFMIN(0.9f, (6144.0f * s->channels - 3) / frame_bits);
+            for (i = 0; i < s->chan_map[0]; i++) {
+                chans = s->chan_map[i + 1] == TYPE_CPE ? 2 : 1;
+                for (ch = 0; ch < chans; ch++)
+                    memcpy(s->cpe[i].ch[ch].coeffs, s->cpe[i].ch[ch].pcoeffs,
+                           sizeof(s->cpe[i].ch[ch].coeffs));
+            }
+            its++;
+            continue;
         }
 
         frame_bits = put_bits_count(&s->pb);
@@ -1423,6 +1629,8 @@ static int aac_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
             break;
         }
     } while (1);
+    if (avctx->flags & AV_CODEC_FLAG_QSCALE)
+        s->lambda = avctx->global_quality > 0 ? avctx->global_quality : 120;
 
     /* tool-usage stats over the final per-band decisions of this frame */
     for (i = 0; i < s->chan_map[0]; i++) {
@@ -1483,7 +1691,15 @@ static int aac_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
     }
     avpkt->size            = put_bytes_output(&s->pb);
 
-    s->lambda_sum += (s->nmr && s->nmr->lam_rc > 0.0f) ? s->nmr->lam_rc : s->lambda;
+    /* NMR reports its real operating lambda: the corridor centre in CBR,
+     * the quality-mode slew state in VBR/ABR - the lambda of the last long
+     * operating-point solve, which short frames and legality re-solves do
+     * not update (the outer-loop s->lambda is never touched for this coder
+     * and would pin Qavg at its 120 init) */
+    s->lambda_sum += (s->nmr && s->nmr->lam_slew > 0.0f &&
+                      ((avctx->flags & AV_CODEC_FLAG_QSCALE) || s->options.rc == 1)) ?
+                     s->nmr->lam_slew :
+                     (s->nmr && s->nmr->lam_rc > 0.0f) ? s->nmr->lam_rc : s->lambda;
     s->lambda_count++;
 
     ret = ff_af_queue_remove(&s->afq, avctx->frame_size, avpkt);
@@ -1560,6 +1776,18 @@ static av_cold int alloc_buffers(AVCodecContext *avctx, AACEncContext *s)
     return 0;
 }
 
+static av_cold int check_height_ext(AVCodecContext *avctx, AACEncContext *s)
+{
+    for (int i = 0; i < avctx->ch_layout.nb_channels; i++) {
+        enum AVChannel ch = av_channel_layout_channel_from_index(&avctx->ch_layout, i);
+        if (ch >= AV_CHAN_TOP_FRONT_LEFT && ch <= AV_CHAN_TOP_BACK_RIGHT)
+            return 1;
+        // Layouts with TOP_SIDE channels also include the above.
+    }
+
+    return 0;
+}
+
 static av_cold int aac_encode_init(AVCodecContext *avctx)
 {
     AACEncContext *s = avctx->priv_data;
@@ -1586,6 +1814,20 @@ static av_cold int aac_encode_init(AVCodecContext *avctx)
         }
     }
 
+    if (!s->needs_pce && chcfg == 7 /* 7.1(wide) */ && !s->options.allow_71wide) {
+        /**
+         * FFmpeg used to produce out-of-spec AAC files that mistagged 7.1
+         * as 7.1(wide), and this wark-around is still enabled by default in
+         * aacdec.c, so avoid producing such files in the rare case that the
+         * user correctly passed 7.1(wide) channel layout content.
+         */
+        av_log(avctx, AV_LOG_INFO, "Forcing the use of PCE to encode 7.1(wide) "
+               "channel layout to avoid ambiguity. Set -aac_allow_71wide 1 to "
+               "override this behavior and force the use of spec-compliant "
+               "channel configuration ID.\n");
+        s->needs_pce = 1;
+    }
+
     if (s->needs_pce) {
         char buf[64];
         for (i = 0; i < FF_ARRAY_ELEMS(aac_pce_configs); i++)
@@ -1600,6 +1842,7 @@ static av_cold int aac_encode_init(AVCodecContext *avctx)
         s->pce = aac_pce_configs[i];
         s->reorder_map = s->pce.reorder_map;
         s->chan_map = s->pce.config_map;
+        s->needs_height_ext = check_height_ext(avctx, s);
         chcfg = 0;
     } else {
         s->reorder_map = aac_chan_maps[chcfg - 1];
@@ -1657,13 +1900,28 @@ static av_cold int aac_encode_init(AVCodecContext *avctx)
     if (avctx->cutoff > 0) {
         s->bandwidth = avctx->cutoff;
     } else {
-        int frame_br = (avctx->flags & AV_CODEC_FLAG_QSCALE) ?
-                       (avctx->bit_rate / 2.0f * (s->lambda / 120.f) * 1.5f) :
-                       (avctx->bit_rate / avctx->ch_layout.nb_channels);
+        int frame_br;
+        if (avctx->flags & AV_CODEC_FLAG_QSCALE) {
+            if (s->options.coder == AAC_CODER_NMR) {
+                /* nd-target VBR: expected per-channel rate from the quality
+                 * ladder (measured: q=1 ~ 64.5 kbps/ch, x1.27 per doubling) */
+                float q = avctx->global_quality > 0 ?
+                          avctx->global_quality / (float)FF_QP2LAMBDA : 1.0f;
+                frame_br = 66000 * powf(q, 0.29f);
+            } else {
+                frame_br = avctx->bit_rate / 2.0f * (s->lambda / 120.f) * 1.5f;
+            }
+        } else {
+            frame_br = avctx->bit_rate / avctx->ch_layout.nb_channels;
+        }
 
         if (s->options.coder == AAC_CODER_NMR && frame_br >= 24000) {
+            /* Ear-tuned, not metric-tuned: Zim rewards HF presence and cannot
+             * hear HF graininess, so metric sweeps push this table wide. At
+             * these rates coarse HF reads as beat-synchronous crunch (velvet);
+             * FDK sits at 14k and Apple at ~16k for 64 kbps/ch. */
             static const int rates[] = { 24000, 32000, 48000, 64000, 96000, 192000 };
-            static const int bws[]   = { 14000, 14000, 18500, 20000, 21000, 22000 };
+            static const int bws[]   = { 14000, 14000, 15000, 16000, 19500, 22000 };
             int bw_i = 0;
             for (; bw_i < FF_ARRAY_ELEMS(rates) - 2 && frame_br > rates[bw_i + 1]; bw_i++);
             s->bandwidth = bws[bw_i] + (int)((int64_t)(bws[bw_i + 1] - bws[bw_i]) *
@@ -1706,9 +1964,12 @@ static av_cold int aac_encode_init(AVCodecContext *avctx)
     lengths[1] = ff_aac_num_swb_128[s->samplerate_index];
     for (i = 0; i < s->chan_map[0]; i++)
         grouping[i] = s->chan_map[i + 1] == TYPE_CPE;
+    s->psy.unbounded_pe = ((avctx->flags & AV_CODEC_FLAG_QSCALE) || s->options.rc == 1) &&
+                          s->options.coder == AAC_CODER_NMR;
     if ((ret = ff_psy_init(&s->psy, avctx, 2, sizes, lengths,
                            s->chan_map[0], grouping, s->bandwidth)) < 0)
         return ret;
+
     ff_lpc_init(&s->lpc, 2*avctx->frame_size, TNS_MAX_ORDER, FF_LPC_TYPE_LEVINSON);
     s->random_state = 0x1f2e3d4c;
 
@@ -1730,7 +1991,11 @@ static const AVOption aacenc_options[] = {
     {"aac_pns", "Perceptual noise substitution", offsetof(AACEncContext, options.pns), AV_OPT_TYPE_BOOL, {.i64 = 1}, -1, 1, AACENC_FLAGS},
     {"aac_tns", "Temporal noise shaping", offsetof(AACEncContext, options.tns), AV_OPT_TYPE_BOOL, {.i64 = 1}, -1, 1, AACENC_FLAGS},
     {"aac_pce", "Forces the use of PCEs", offsetof(AACEncContext, options.pce), AV_OPT_TYPE_BOOL, {.i64 = 0}, -1, 1, AACENC_FLAGS},
+    {"aac_rc", "Rate-control mode (NMR coder)", offsetof(AACEncContext, options.rc), AV_OPT_TYPE_INT, {.i64 = 0}, 0, 1, AACENC_FLAGS, .unit = "aac_rc"},
+        {"cbr", "Constant bitrate (corridor + leaky bucket)", 0, AV_OPT_TYPE_CONST, {.i64 = 0}, INT_MIN, INT_MAX, AACENC_FLAGS, .unit = "aac_rc"},
+        {"abr", "Average bitrate (constant-quality target, slow rate servo)", 0, AV_OPT_TYPE_CONST, {.i64 = 1}, INT_MIN, INT_MAX, AACENC_FLAGS, .unit = "aac_rc"},
     {"aac_nmr_speed", "NMR coder speed level: 0 = slowest/best, higher trades quality for speed", offsetof(AACEncContext, options.nmr_speed), AV_OPT_TYPE_INT, {.i64 = 0}, 0, 4, AACENC_FLAGS},
+    {"aac_allow_71wide", "Allow non-PCE use of 7.1(wide) channel layout", offsetof(AACEncContext, options.allow_71wide), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, AACENC_FLAGS},
     FF_AAC_PROFILE_OPTS
     {NULL}
 };

@@ -43,6 +43,7 @@ static const FFBitStreamFilter * const bitstream_filters[] = {
     &ff_smpte436m_to_eia608_bsf,
     &ff_text2movsub_bsf,
     &ff_trace_headers_bsf,
+    &ff_trim_bsf,
     &ff_truehd_core_bsf,
     &ff_vp9_metadata_bsf,
     &ff_vp9_raw_reorder_bsf,
